@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Transition Master Roadmap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #06d6a0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --border: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        .main-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            transform: rotate(30deg);
+        }
+        
+        .header-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header-content .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            margin-top: 1.5rem;
+            max-width: 500px;
+        }
+        
+        .profile-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            background: transparent;
+            color: var(--gray);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-btn:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+        
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .section-header h2 i {
+            color: var(--primary);
+        }
+        
+        /* Phase Cards */
+        .phase-card {
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: var(--light);
+            border-left: 6px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .phase-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+        
+        .phase-title {
+            flex: 1;
+        }
+        
+        .phase-title h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .phase-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .phase-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .phase-tag.foundation { background: var(--success); }
+        .phase-tag.core { background: var(--primary); }
+        .phase-tag.advanced { background: var(--secondary); }
+        .phase-tag.portfolio { background: var(--accent); color: var(--dark); }
+        
+        .time-badge {
+            background: white;
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Progress Elements */
+        .progress-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-bar-custom {
+            height: 12px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Checklists */
+        .checklist {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .checklist-item {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+            background: white;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+        
+        .checklist-item.completed {
+            background: #f0fdf4;
+            border-color: var(--success);
+        }
+        
+        .checklist-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gray);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        
+        .checklist-item.completed .checklist-checkbox {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+        
+        .checklist-content {
+            flex: 1;
+        }
+        
+        .checklist-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .checklist-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+        
+        /* Resource Cards */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .resource-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        
+        .resource-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-type {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .resource-type.free {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .resource-type.paid {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .resource-type.tool {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .resource-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .resource-platform {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-why {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: between;
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        /* Project Cards */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .project-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        
+        .project-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--light);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .project-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-item {
+            margin-bottom: 0.75rem;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid white;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-right: 10px solid white;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--light);
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 2rem 1rem;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .main-nav {
+                flex-direction: column;
+            }
+            
+            .nav-btn {
+                justify-content: center;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .phase-header {
+                flex-direction: column;
+            }
+            
+            .resource-grid, .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 40px;
+            }
+            
+            .timeline-content::after {
+                display: none;
+            }
+            
+            .timeline-marker {
+                left: 20px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .main-nav, .controls {
+                display: none;
+            }
+            
+            .content-section {
+                display: block !important;
+                box-shadow: none;
+                break-inside: avoid;
+            }
+            
+            .phase-card, .resource-card, .project-card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <h1>AI Career Transition Master Roadmap</h1>
+                <p class="subtitle">From Medical Coding to AI Professional in 6 Months</p>
+                <p>BCA Foundation + Healthcare Domain Expertise = Competitive Advantage</p>
+                
+                <div class="user-profile">
+                    <div class="profile-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div>
+                        <h4>Mounika</h4>
+                        <p>BCA Graduate | Medical Coding Professional | Aspiring AI Specialist</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <button class="nav-btn active" data-target="overview">
+                <i class="fas fa-chart-line"></i> Overview
+            </button>
+            <button class="nav-btn" data-target="roadmap">
+                <i class="fas fa-map-marked-alt"></i> 6-Month Roadmap
+            </button>
+            <button class="nav-btn" data-target="timeline">
+                <i class="fas fa-calendar-alt"></i> Timeline
+            </button>
+            <button class="nav-btn" data-target="resources">
+                <i class="fas fa-book"></i> Learning Resources
+            </button>
+            <button class="nav-btn" data-target="projects">
+                <i class="fas fa-laptop-code"></i> Portfolio Projects
+            </button>
+            <button class="nav-btn" data-target="progress">
+                <i class="fas fa-tasks"></i> Progress Tracker
+            </button>
+        </nav>
+        
+        <!-- Overview Section -->
+        <section id="overview" class="content-section active">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> Strategic Learning Plan Overview</h2>
+                <p>Optimized roadmap leveraging your BCA background and healthcare domain expertise</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-title">
+                                <h3>Why This Approach Works</h3>
+                            </div>
+                        </div>
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <div class="checklist-content">
+                                    <div class="checklist-title">Domain Advantage</div>
+                                    <p>Your medical coding experience gives you unique insight into healthcare AI applications</p>
+                                </div>
+                            </li>
+                            <li class="checklist-item">
+                                <div class="checklist-content">
+                                    <div class="checklist-title">Efficient Sequencing</div>
+                                    <p>Learn foundational concepts before practical applications in optimal order</p>
+                                </div>
+                            </li>
+                            <li class="checklist-item">
+                                <div class="checklist-content">
+                                    <div class="checklist-title">Project-Based Validation</div>
+                                    <p>Every skill is immediately applied to real projects for better retention</p>
+                                </div>
+                            </li>
+                            <li class="checklist-item">
+                                <div class="checklist-content">
+                                    <div class="checklist-title">Retention-Focused</div>
+                                    <p>Uses spaced repetition and active recall techniques from cognitive science</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <h3>Overall Learning Progress</h3>
+                            <span id="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar-custom">
+                            <div class="progress-fill" id="main-progress-bar" style="width: 0%"></div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number" id="completed-count">0</div>
+                                <div class="stat-label">Tasks Completed</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="total-count">48</div>
+                                <div class="stat-label">Total Tasks</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">6</div>
+                                <div class="stat-label">Months Timeline</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Portfolio Projects</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-title">
+                                <h3>Expected Outcomes</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <div class="resource-title">Month 3</div>
+                                <p>Python proficiency + AI concepts solid</p>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-title">Month 6</div>
+                                <p>Portfolio complete + job applications ready</p>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-title">Target Roles</div>
+                                <p>AI Solutions Specialist, Healthcare AI Analyst, Prompt Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-title">
+                                <h3>Daily Learning Rhythm</h3>
+                            </div>
+                        </div>
+                        
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <div class="checklist-content">
+                                    <div class="checklist-title">20 min: Review previous concepts</div>
+                                    <p>Spaced repetition for retention</p>
+                                </div>
+                            </li>
+                            <li class="checklist-item">
+                                <div class="checklist-content">
+                                    <div class="checklist-title">60 min: New content study</div>
+                                    <p>Focused learning sessions</p>
+                                </div>
+                            </li>
+                            <li class="checklist-item">
+                                <div class="checklist-content">
+                                    <div class="checklist-title">60 min: Hands-on practice</div>
+                                    <p>Apply knowledge immediately</p>
+                                </div>
+                            </li>
+                            <li class="checklist-item">
+                                <div class="checklist-content">
+                                    <div class="checklist-title">10 min: Plan next session</div>
+                                    <p>Set clear goals and objectives</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 6-Month Roadmap Section -->
+        <section id="roadmap" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-map-marked-alt"></i> 6-Month Learning Roadmap</h2>
+                <p>Detailed phase-by-phase progression from foundation to job readiness</p>
+            </div>
+            
+            <!-- Phase 1 -->
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-title">
+                        <h3>Phase 1: Foundation & Language (Month 1-2)</h3>
+                        <p><strong>Goal:</strong> Speak AI fluently and write functional Python</p>
+                    </div>
+                    <div class="phase-meta">
+                        <span class="phase-tag foundation">Foundation</span>
+                        <span class="time-badge"><i class="fas fa-clock"></i> 8 weeks</span>
+                    </div>
+                </div>
+                
+                <ul class="checklist">
+                    <li class="checklist-item" data-id="task-1">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Complete "AI For Everyone" (Andrew Ng)</div>
+                            <p>Non-technical foundation understanding AI/ML/GenAI concepts</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 6 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Coursera</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-2">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Finish first 4 courses of "Python for Everybody"</div>
+                            <p>Build Python proficiency with practical, beginner-friendly approach</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 20 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Coursera</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-3">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Build 5 working Python scripts automating medical coding tasks</div>
+                            <p>Apply Python to your domain for immediate practical value</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 15 hours</span>
+                                <span><i class="fas fa-laptop-code"></i> Hands-on</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-4">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Complete basic Pandas and data analysis exercises</div>
+                            <p>Essential data manipulation skills for AI/ML workflows</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 10 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Kaggle</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-title">
+                        <h3>Phase 2: Core AI Mechanics (Month 3-4)</h3>
+                        <p><strong>Goal:</strong> Build strong ML foundations and transition smoothly into generative AI</p>
+                    </div>
+                    <div class="phase-meta">
+                        <span class="phase-tag core">Core Skills</span>
+                        <span class="time-badge"><i class="fas fa-clock"></i> 8 weeks</span>
+                    </div>
+                </div>
+                
+                <ul class="checklist">
+                    <li class="checklist-item" data-id="task-5">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Machine Learning Specialization — Andrew Ng</div>
+                            <p>Gold-standard course for understanding ML intuition and model mechanics</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 60 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Coursera</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-6">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Kaggle Learn Micro-Courses</div>
+                            <p>Hands-on practice on real datasets: ML, deep learning, data cleaning</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 15 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Kaggle</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-7">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Build Your First ML Project — Healthcare Focus</div>
+                            <p>Apply ML to a practical medical dataset for portfolio-ready experience</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 20 hours</span>
+                                <span><i class="fas fa-laptop-code"></i> Project</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-8">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Generative AI with LLMs — Coursera</div>
+                            <p>Bridges ML and LLMs; covers transformers, embeddings, and fine-tuning</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 16 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Coursera</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-9">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Prompt Engineering for Developers — OpenAI / Coursera</div>
+                            <p>Master structured prompt patterns and use GPT-4 efficiently</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 2 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Coursera</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-10">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Subscribe to ChatGPT Plus</div>
+                            <p>Use GPT-4, DALL-E, and advanced data analysis as your interactive lab</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> Ongoing</span>
+                                <span><i class="fas fa-tools"></i> Tool</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-11">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Build First LLM Mini-Project</div>
+                            <p>Create a small generative-AI tool — e.g., medical-chatbot prototype</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 20 hours</span>
+                                <span><i class="fas fa-laptop-code"></i> Project</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-title">
+                        <h3>Phase 3: Specializing in Generative AI (Month 5)</h3>
+                        <p><strong>Goal:</strong> Deep mastery of LLMs, creative AI tools, and real-world application design</p>
+                    </div>
+                    <div class="phase-meta">
+                        <span class="phase-tag advanced">Advanced</span>
+                        <span class="time-badge"><i class="fas fa-clock"></i> 4 weeks</span>
+                    </div>
+                </div>
+                
+                <ul class="checklist">
+                    <li class="checklist-item" data-id="task-12">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Generative AI for Everyone — Andrew Ng</div>
+                            <p>High-level understanding of business and ethical implications</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 8 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Coursera</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-13">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Prompt Engineering Specialization — Vanderbilt</div>
+                            <p>Advanced, multi-model prompting, including instruction-tuned models</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 20 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Coursera</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-14">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Master AI Image Tools — Midjourney / DALL-E</div>
+                            <p>Explore multimodal generation through guided creative projects</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 15 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Udemy/YouTube</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-15">
+    <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+    <div class="checklist-content">
+        <div class="checklist-title">Capstone Project: Domain-Specific Gen-AI App</div>
+        <p>End-to-end project combining ML + LLM + prompt engineering + creative AI tools workflow</p>
+        <p><strong>Example Implementation:</strong> Medical Documentation Assistant that summarizes reports, suggests ICD-10 codes, and generates patient education materials using multimodal AI</p>
+        <p><em>See detailed specifications in Portfolio Projects section</em></p>
+        <div class="checklist-meta">
+            <span><i class="fas fa-clock"></i> 40 hours</span>
+            <span><i class="fas fa-laptop-code"></i> Capstone Project</span>
+            <span><i class="fas fa-star"></i> Portfolio Centerpiece</span>
+        </div>
+    </div>
+</li>
+                </ul>
+            </div>
+            
+            <!-- Phase 4 -->
+            <div class="phase-card">
+                <div class="phase-header">
+                    <div class="phase-title">
+                        <h3>Phase 4: Projects & Ethics (Month 6)</h3>
+                        <p><strong>Goal:</strong> Build portfolio and understand responsible AI practices</p>
+                    </div>
+                    <div class="phase-meta">
+                        <span class="phase-tag portfolio">Job Ready</span>
+                        <span class="time-badge"><i class="fas fa-clock"></i> 4 weeks</span>
+                    </div>
+                </div>
+                
+                <ul class="checklist">
+                    <li class="checklist-item" data-id="task-16">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Complete Project 2: Healthcare Analytics Dashboard</div>
+                            <p>Interactive dashboard with AI-generated insights from healthcare data</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 35 hours</span>
+                                <span><i class="fas fa-laptop-code"></i> Portfolio Project</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-17">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Complete Project 3: Financial Fraud Detection System</div>
+                            <p>Machine learning model to detect fraudulent transactions</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 30 hours</span>
+                                <span><i class="fas fa-laptop-code"></i> Portfolio Project</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-18">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Complete Project 4: Educational Content Generator</div>
+                            <p>AI-powered tool that creates learning materials and quizzes</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 25 hours</span>
+                                <span><i class="fas fa-laptop-code"></i> Portfolio Project</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-19">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Build projects on Kaggle platform</div>
+                            <p>Create public notebooks and compete in data science competitions</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 20 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> Kaggle</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-20">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Complete "Ethics of AI" course</div>
+                            <p>Understand responsible AI practices and ethical considerations</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 12 hours</span>
+                                <span><i class="fas fa-external-link-alt"></i> University of Helsinki</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-21">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Deploy projects and create portfolio website</div>
+                            <p>Showcase your work professionally to potential employers</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 15 hours</span>
+                                <span><i class="fas fa-globe"></i> Deployment</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="checklist-item" data-id="task-22">
+                        <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                        <div class="checklist-content">
+                            <div class="checklist-title">Prepare resume and LinkedIn profile for AI roles</div>
+                            <p>Tailor your professional presence for AI job applications</p>
+                            <div class="checklist-meta">
+                                <span><i class="fas fa-clock"></i> 8 hours</span>
+                                <span><i class="fas fa-briefcase"></i> Career</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Timeline Section -->
+        <section id="timeline" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-calendar-alt"></i> Learning Timeline & Milestones</h2>
+                <p>Visual progression through your 6-month AI career transition journey</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Month 1-2: Foundation Building</h4>
+                        <p><strong>Focus:</strong> AI Concepts + Python Programming</p>
+                        <ul>
+                            <li>AI For Everyone course completion</li>
+                            <li>Python for Everybody (first 4 courses)</li>
+                            <li>5 practical Python scripts</li>
+                            <li>Basic Pandas data analysis</li>
+                        </ul>
+                        <div class="time-badge"><i class="fas fa-clock"></i> 8 weeks</div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div style="width: 45%;"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div style="width: 45%;"></div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Month 3-4: Core AI Mechanics</h4>
+                        <p><strong>Focus:</strong> Machine Learning + Generative AI Foundations</p>
+                        <ul>
+                            <li>Machine Learning Specialization</li>
+                            <li>Kaggle Learn Micro-Courses</li>
+                            <li>First ML healthcare project</li>
+                            <li>Generative AI with LLMs</li>
+                            <li>Prompt Engineering mastery</li>
+                            <li>First LLM mini-project</li>
+                        </ul>
+                        <div class="time-badge"><i class="fas fa-clock"></i> 8 weeks</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Month 5: Generative AI Specialization</h4>
+                        <p><strong>Focus:</strong> Advanced LLMs, Prompt Engineering, Creative AI</p>
+                        <ul>
+                            <li>Generative AI for Everyone</li>
+                            <li>Prompt Engineering Specialization</li>
+                            <li>AI Image Tools mastery</li>
+                            <li>Capstone Domain-Specific Project</li>
+                        </ul>
+                        <div class="time-badge"><i class="fas fa-clock"></i> 4 weeks</div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                    <div style="width: 45%;"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div style="width: 45%;"></div>
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Month 6: Portfolio & Job Ready</h4>
+                        <p><strong>Focus:</strong> Project Development + Career Preparation</p>
+                        <ul>
+                            <li>3 Additional Portfolio Projects</li>
+                            <li>Kaggle competition participation</li>
+                            <li>AI Ethics certification</li>
+                            <li>Project deployment & portfolio site</li>
+                            <li>Resume & LinkedIn optimization</li>
+                        </ul>
+                        <div class="time-badge"><i class="fas fa-clock"></i> 4 weeks</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <h3>Weekly Study Template</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="phase-card">
+                            <h5>Daily Rhythm (2-3 hours)</h5>
+                            <ul class="checklist">
+                                <li class="checklist-item">
+                                    <div class="checklist-content">
+                                        <div class="checklist-title">20 min: Review previous concepts</div>
+                                        <p>Spaced repetition for retention</p>
+                                    </div>
+                                </li>
+                                <li class="checklist-item">
+                                    <div class="checklist-content">
+                                        <div class="checklist-title">60 min: New content study</div>
+                                        <p>Focused learning sessions</p>
+                                    </div>
+                                </li>
+                                <li class="checklist-item">
+                                    <div class="checklist-content">
+                                        <div class="checklist-title">60 min: Hands-on practice</div>
+                                        <p>Apply knowledge immediately</p>
+                                    </div>
+                                </li>
+                                <li class="checklist-item">
+                                    <div class="checklist-content">
+                                        <div class="checklist-title">10 min: Plan next session</div>
+                                        <p>Set clear goals and objectives</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="phase-card">
+                            <h5>Weekly Checkpoints</h5>
+                            <ul class="checklist">
+                                <li class="checklist-item" data-id="task-23">
+                                    <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                                    <div class="checklist-content">
+                                        <div class="checklist-title">Completed core coursework</div>
+                                    </div>
+                                </li>
+                                <li class="checklist-item" data-id="task-24">
+                                    <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                                    <div class="checklist-content">
+                                        <div class="checklist-title">Built or improved a project</div>
+                                    </div>
+                                </li>
+                                <li class="checklist-item" data-id="task-25">
+                                    <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                                    <div class="checklist-content">
+                                        <div class="checklist-title">Posted learning insights on LinkedIn</div>
+                                    </div>
+                                </li>
+                                <li class="checklist-item" data-id="task-26">
+                                    <div class="checklist-checkbox"><i class="fas fa-check"></i></div>
+                                    <div class="checklist-content">
+                                        <div class="checklist-title">Networked with 2 AI professionals</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Resources Section -->
+        <section id="resources" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-book"></i> Learning Resources</h2>
+                <p>Curated selection of high-impact resources from comprehensive research</p>
+            </div>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">AI For Everyone</h4>
+                        <span class="resource-type free">Free</span>
+                    </div>
+                    <div class="resource-platform">Coursera - Andrew Ng</div>
+                    <p class="resource-why">Perfect non-technical foundation from AI pioneer Andrew Ng</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 6 hours</span>
+                        <span><i class="fas fa-star"></i> Essential</span>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">Python for Everybody</h4>
+                        <span class="resource-type free">Free</span>
+                    </div>
+                    <div class="resource-platform">Coursera - Dr. Charles Severance</div>
+                    <p class="resource-why">Gentle introduction with immediate practical application</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 20 hours</span>
+                        <span><i class="fas fa-star"></i> Essential</span>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">Machine Learning Specialization</h4>
+                        <span class="resource-type paid">Paid</span>
+                    </div>
+                    <div class="resource-platform">Coursera - Andrew Ng</div>
+                    <p class="resource-why">Gold standard ML course focusing on intuition over complex math</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 60 hours</span>
+                        <span><i class="fas fa-star"></i> Essential</span>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">Generative AI for Everyone</h4>
+                        <span class="resource-type free">Free</span>
+                    </div>
+                    <div class="resource-platform">Coursera - Andrew Ng</div>
+                    <p class="resource-why">Non-technical follow-up focusing specifically on Generative AI</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 8 hours</span>
+                        <span><i class="fas fa-star"></i> Essential</span>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">Prompt Engineering Specialization</h4>
+                        <span class="resource-type free">Free</span>
+                    </div>
+                    <div class="resource-platform">Coursera - Vanderbilt University</div>
+                    <p class="resource-why">Top specialization focused entirely on effective prompt engineering</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 20 hours</span>
+                        <span><i class="fas fa-star"></i> Essential</span>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">AI Image Tools Courses</h4>
+                        <span class="resource-type paid">Paid</span>
+                    </div>
+                    <div class="resource-platform">Udemy / LinkedIn Learning</div>
+                    <p class="resource-why">Project-based courses for Midjourney, DALL-E specific techniques</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 15 hours</span>
+                        <span><i class="fas fa-star"></i> Recommended</span>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">ChatGPT Plus</h4>
+                        <span class="resource-type tool">Tool</span>
+                    </div>
+                    <div class="resource-platform">OpenAI - Subscription</div>
+                    <p class="resource-why">Essential for GPT-4, DALL-E, and advanced data analysis</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-dollar-sign"></i> $20/month</span>
+                        <span><i class="fas fa-star"></i> Recommended</span>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">Kaggle Learn</h4>
+                        <span class="resource-type free">Free</span>
+                    </div>
+                    <div class="resource-platform">Kaggle - Interactive</div>
+                    <p class="resource-why">Hands-on Python, Pandas, and ML exercises with datasets</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 15 hours</span>
+                        <span><i class="fas fa-star"></i> Practical</span>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">Kaggle Platform</h4>
+                        <span class="resource-type free">Free</span>
+                    </div>
+                    <div class="resource-platform">Kaggle.com</div>
+                    <p class="resource-why">#1 place for practical projects, competitions, and portfolio building</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> Self-paced</span>
+                        <span><i class="fas fa-star"></i> Essential</span>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <h4 class="resource-title">Ethics of AI</h4>
+                        <span class="resource-type free">Free</span>
+                    </div>
+                    <div class="resource-platform">University of Helsinki</div>
+                    <p class="resource-why">Simple, free, text-based course covering Responsible AI thoroughly</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 12 hours</span>
+                        <span><i class="fas fa-star"></i> Essential</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-laptop-code"></i> Portfolio Projects</h2>
+                <p>Five high-impact projects demonstrating diverse AI applications across multiple domains</p>
+            </div>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Medical Documentation Assistant</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">LLMs</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Streamlit</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Field</div>
+                            <p>Healthcare & Medical AI</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Objective</div>
+                            <p>Automate medical report processing and coding suggestions using AI</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Tech Stack</div>
+                            <p>Python, Streamlit, OpenAI API, Pandas</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Learning Outcomes</div>
+                            <p>API integration, prompt engineering, healthcare AI applications</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Portfolio Impact</div>
+                            <p>Demonstrates domain expertise in healthcare AI applications</p>
+                        </div>
+                    </div>
+                    
+                    <div class="time-badge"><i class="fas fa-clock"></i> 40 hours estimated</div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Healthcare Analytics Dashboard</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">Data Visualization</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Automation</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Field</div>
+                            <p>Data Analysis & Visualization</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Objective</div>
+                            <p>Create interactive healthcare data dashboard with AI-generated insights</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Tech Stack</div>
+                            <p>Python, Pandas, Streamlit, Plotly, OpenAI API</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Learning Outcomes</div>
+                            <p>Data analysis, visualization, AI-powered automation, deployment</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Portfolio Impact</div>
+                            <p>Shows data analysis skills and AI integration in business intelligence</p>
+                        </div>
+                    </div>
+                    
+                    <div class="time-badge"><i class="fas fa-clock"></i> 35 hours estimated</div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Financial Fraud Detection System</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Finance</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Scikit-learn</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Field</div>
+                            <p>Finance & Security AI</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Objective</div>
+                            <p>Build ML model to detect fraudulent financial transactions</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Tech Stack</div>
+                            <p>Python, Scikit-learn, Pandas, Matplotlib, Jupyter</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Learning Outcomes</div>
+                            <p>Classification algorithms, feature engineering, model evaluation</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Portfolio Impact</div>
+                            <p>Demonstrates practical ML application in high-value finance domain</p>
+                        </div>
+                    </div>
+                    
+                    <div class="time-badge"><i class="fas fa-clock"></i> 30 hours estimated</div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">Educational Content Generator</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Education</span>
+                            <span class="project-tag">Generative AI</span>
+                            <span class="project-tag">LLMs</span>
+                            <span class="project-tag">Web App</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Field</div>
+                            <p>Education Technology</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Objective</div>
+                            <p>AI-powered tool that creates learning materials and quizzes automatically</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Tech Stack</div>
+                            <p>Python, Flask, OpenAI API, HTML/CSS, JavaScript</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Learning Outcomes</div>
+                            <p>Web development, API integration, educational technology applications</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Portfolio Impact</div>
+                            <p>Shows AI application in education and content generation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="time-badge"><i class="fas fa-clock"></i> 25 hours estimated</div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">AI-Powered Customer Support Chatbot</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Business</span>
+                            <span class="project-tag">LLMs</span>
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Web Development</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Field</div>
+                            <p>Business Automation & Customer Service</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Objective</div>
+                            <p>Build intelligent chatbot for customer support with context awareness</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Tech Stack</div>
+                            <p>Python, LangChain, Streamlit, OpenAI API, Vector Database</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Learning Outcomes</div>
+                            <p>RAG systems, conversation design, business automation</p>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Portfolio Impact</div>
+                            <p>Demonstrates practical business AI application with commercial value</p>
+                        </div>
+                    </div>
+                    
+                    <div class="time-badge"><i class="fas fa-clock"></i> 35 hours estimated</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Progress Tracker Section -->
+        <section id="progress" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-tasks"></i> Progress Tracker</h2>
+                <p>Monitor your learning journey and export your progress</p>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-header">
+                    <h3>Overall Completion</h3>
+                    <span id="progress-percent-large">0%</span>
+                </div>
+                <div class="progress-bar-custom">
+                    <div class="progress-fill" id="large-progress-bar" style="width: 0%"></div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <canvas id="progressChart" height="200"></canvas>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <div class="stat-number" id="completed-count-large">0</div>
+                            <div class="stat-label">Tasks Completed</div>
+                        </div>
+                        <div class="stat-card mt-3">
+                            <div class="stat-number" id="inprogress-count">0</div>
+                            <div class="stat-label">In Progress</div>
+                        </div>
+                        <div class="stat-card mt-3">
+                            <div class="stat-number" id="remaining-count">48</div>
+                            <div class="stat-label">Remaining Tasks</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-primary" id="exportJson">
+                    <i class="fas fa-download"></i> Export Plan as JSON
+                </button>
+                <button class="btn btn-primary" id="exportCsv">
+                    <i class="fas fa-file-csv"></i> Export Progress as CSV
+                </button>
+                <button class="btn btn-secondary" id="resetProgress">
+                    <i class="fas fa-redo"></i> Reset Progress
+                </button>
+                <button class="btn btn-secondary" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print Summary
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                button.classList.add('active');
+                const targetId = button.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+        
+        // Progress tracking and persistence
+        let tasks = [];
+        
+        function initializeTasks() {
+            const checklistItems = document.querySelectorAll('.checklist-item');
+            tasks = Array.from(checklistItems).map((item, index) => {
+                return {
+                    id: item.getAttribute('data-id') || `task-${index}`,
+                    completed: item.classList.contains('completed'),
+                    element: item
+                };
+            });
+            updateProgress();
+        }
+        
+        function saveProgress() {
+            const progress = {};
+            tasks.forEach(task => {
+                progress[task.id] = task.completed;
+            });
+            localStorage.setItem('aiRoadmapProgress', JSON.stringify(progress));
+            updateProgress();
+        }
+        
+        function loadProgress() {
+            const saved = localStorage.getItem('aiRoadmapProgress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                tasks.forEach(task => {
+                    if (progress[task.id]) {
+                        task.completed = true;
+                        task.element.classList.add('completed');
+                        const checkbox = task.element.querySelector('.checklist-checkbox');
+                        if (checkbox) checkbox.innerHTML = '<i class="fas fa-check"></i>';
+                    }
+                });
+            }
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const completed = tasks.filter(task => task.completed).length;
+            const total = tasks.length;
+            const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            // Update progress bars
+            document.getElementById('main-progress-bar').style.width = `${percent}%`;
+            document.getElementById('large-progress-bar').style.width = `${percent}%`;
+            
+            // Update percentage displays
+            document.getElementById('progress-percent').textContent = `${percent}%`;
+            document.getElementById('progress-percent-large').textContent = `${percent}%`;
+            
+            // Update counts
+            document.getElementById('completed-count').textContent = completed;
+            document.getElementById('completed-count-large').textContent = completed;
+            document.getElementById('total-count').textContent = total;
+            document.getElementById('inprogress-count').textContent = Math.min(total - completed, Math.floor(total * 0.25));
+            document.getElementById('remaining-count').textContent = total - completed;
+            
+            // Update chart if it exists
+            if (window.progressChartInstance) {
+                window.progressChartInstance.data.datasets[0].data = [completed, total - completed];
+                window.progressChartInstance.update();
+            }
+        }
+        
+        // Checklist functionality
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.checklist-checkbox')) {
+                const item = e.target.closest('.checklist-item');
+                const isCompleted = item.classList.contains('completed');
+                
+                if (isCompleted) {
+                    item.classList.remove('completed');
+                    item.querySelector('.checklist-checkbox').innerHTML = '';
+                } else {
+                    item.classList.add('completed');
+                    item.querySelector('.checklist-checkbox').innerHTML = '<i class="fas fa-check"></i>';
+                }
+                
+                // Find and update the task
+                const taskId = item.getAttribute('data-id');
+                const task = tasks.find(t => t.id === taskId);
+                if (task) {
+                    task.completed = !isCompleted;
+                }
+                
+                saveProgress();
+            }
+        });
+        
+        // Export functionality
+        document.getElementById('exportJson').addEventListener('click', () => {
+            const exportData = {
+                roadmap: 'AI Career Transition Master Plan',
+                lastUpdated: new Date().toISOString(),
+                progress: {
+                    completed: tasks.filter(t => t.completed).length,
+                    total: tasks.length,
+                    percentage: Math.round((tasks.filter(t => t.completed).length / tasks.length) * 100)
+                },
+                tasks: tasks.map(task => ({
+                    id: task.id,
+                    title: task.element.querySelector('.checklist-title')?.textContent || 'Task',
+                    completed: task.completed
+                }))
+            };
+            
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'ai-roadmap-progress.json';
+            link.click();
+        });
+        
+        document.getElementById('exportCsv').addEventListener('click', () => {
+            let csvContent = "Task ID,Task Title,Completed\n";
+            
+            tasks.forEach(task => {
+                const title = task.element.querySelector('.checklist-title')?.textContent || 'Task';
+                const escapedTitle = title.replace(/"/g, '""');
+                csvContent += `"${task.id}","${escapedTitle}",${task.completed}\n`;
+            });
+            
+            const dataBlob = new Blob([csvContent], {type: 'text/csv'});
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'ai-roadmap-progress.csv';
+            link.click();
+        });
+        
+        document.getElementById('resetProgress').addEventListener('click', () => {
+            if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+                tasks.forEach(task => {
+                    task.completed = false;
+                    task.element.classList.remove('completed');
+                    task.element.querySelector('.checklist-checkbox').innerHTML = '';
+                });
+                localStorage.removeItem('aiRoadmapProgress');
+                updateProgress();
+            }
+        });
+        
+        // Initialize progress chart
+        function initProgressChart() {
+            const ctx = document.getElementById('progressChart').getContext('2d');
+            const completed = tasks.filter(t => t.completed).length;
+            const remaining = tasks.length - completed;
+            
+            window.progressChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'Remaining'],
+                    datasets: [{
+                        data: [completed, remaining],
+                        backgroundColor: ['#10b981', '#e2e8f0'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTasks();
+            loadProgress();
+            initProgressChart();
+        });
+    </script>
+</body>
+</html>
